@@ -5,7 +5,7 @@ autocomplete(::Bulma, args...; class="input", kwargs...) = autocomplete(NativeHT
 dropdown(::Bulma, args...; class="input", kwargs...) =
     dropdown(NativeHTML(), args...; postprocess = dom"div.select", class=class, kwargs...)
 
-checkbox(::Bulma, args...; class="interact-widget", kwargs...) =
+checkbox(::Bulma, args...; class="is-checkradio", kwargs...) =
     checkbox(NativeHTML(), args...; class=class, kwargs...)
 
 toggle(s::Bulma, args...; class="switch", kwargs...) =
