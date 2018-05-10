@@ -1,8 +1,12 @@
 module InteractBulma
 
-using InteractNative, WebIO, Vue
-import InteractNative: choosefile, autocomplete, input, dropdown, checkbox, toggle, textbox, button, slider, set_libraries
+using Reexport
+@reexport using InteractNative
+using WebIO, Vue
+import InteractNative: choosefile, autocomplete, input, dropdown, checkbox, toggle, textbox, button, slider, setlibraries
 import InteractNative: NativeHTML
+
+export Bulma
 
 struct Bulma<:InteractNative.CSSFramework; end
 
@@ -14,7 +18,7 @@ InteractNative.libraries(::Bulma) = [
         "https://use.fontawesome.com/releases/v5.0.7/js/all.js"
     ]
 
-InteractNative.set_backend(Bulma())
+InteractNative.setbackend(Bulma())
 
 include("widgets.jl")
 
