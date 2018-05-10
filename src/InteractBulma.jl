@@ -1,12 +1,10 @@
 module InteractBulma
 
-using InteractNative
-import InteractNative: choosefile, autocomplete, input, dropdown, checkbox, textbox, button, slider, set_libraries, observe
+using InteractNative, WebIO, Vue
+import InteractNative: choosefile, autocomplete, input, dropdown, checkbox, toggle, textbox, button, slider, set_libraries
 import InteractNative: NativeHTML
 
 struct Bulma<:InteractNative.CSSFramework; end
-
-export choosefile, autocomplete, input, dropdown, checkbox, textbox, button, slider, observe
 
 InteractNative.set_backend(
     Bulma(),
