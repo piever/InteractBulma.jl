@@ -21,3 +21,6 @@ end
 
 button(::Bulma, args...; class= "is-primary", kwargs...) =
     button(NativeHTML(), args...; class="button $class", kwargs...)
+
+input(::Bulma, args...; class="", kwargs...) =
+    input(NativeHTML(), args...; class="input $class", kwargs...)
