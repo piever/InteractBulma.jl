@@ -1,22 +1,23 @@
-choosefile(::Bulma, args...; class="input", kwargs...) = choosefile(NativeHTML(), args...; class=class, kwargs...)
+choosefile(::Bulma, args...; class="", kwargs...) =
+    choosefile(NativeHTML(), args...; class="input $class", kwargs...)
 
-autocomplete(::Bulma, args...; class="input", kwargs...) = autocomplete(NativeHTML(), args...; class=class, kwargs...)
+autocomplete(::Bulma, args...; class="", kwargs...) = autocomplete(NativeHTML(), args...; class="input $class", kwargs...)
 
-dropdown(::Bulma, args...; class="input", kwargs...) =
-    dropdown(NativeHTML(), args...; postprocess = dom"div.select", class=class, kwargs...)
+dropdown(::Bulma, args...; class="", kwargs...) =
+    dropdown(NativeHTML(), args...; postprocess = dom"div.select", class="input $class", kwargs...)
 
-checkbox(::Bulma, args...; class="is-checkradio", kwargs...) =
-    checkbox(NativeHTML(), args...; class=class, kwargs...)
+checkbox(::Bulma, args...; class="", kwargs...) =
+    checkbox(NativeHTML(), args...; class="is-checkradio $class", kwargs...)
 
-toggle(s::Bulma, args...; class="switch", kwargs...) =
-    checkbox(NativeHTML(), args...; class=class, kwargs...)
+toggle(s::Bulma, args...; class="", kwargs...) =
+    checkbox(NativeHTML(), args...; class="switch $class", kwargs...)
 
-textbox(::Bulma, label=""; value="", class="input", kwargs...) =
-    input(NativeHTML(), value; typ="text", class=class, placeholder=label, kwargs...)
+textbox(::Bulma, label=""; value="", class="", kwargs...) =
+    input(NativeHTML(), value; typ="text", class="input $class", placeholder=label, kwargs...)
 
-function slider(::Bulma, args...; class="slider is-fullwidth", kwargs...)
-    slider(NativeHTML(), args...; class=class, kwargs...)
+function slider(::Bulma, args...; class="is-fullwidth", kwargs...)
+    slider(NativeHTML(), args...; class="slider $class", kwargs...)
 end
 
-button(::Bulma, args...; class= "button is-primary", kwargs...) =
-    button(NativeHTML(), args...; class=class, kwargs...)
+button(::Bulma, args...; class= "is-primary", kwargs...) =
+    button(NativeHTML(), args...; class="button $class", kwargs...)
