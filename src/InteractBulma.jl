@@ -8,7 +8,7 @@ import InteractBase: NativeHTML
 
 export Bulma
 
-struct Bulma<:InteractBase.CSSFramework; end
+struct Bulma<:InteractBase.WidgetTheme; end
 
 InteractBase.libraries(::Bulma) = [
         "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css",
@@ -18,7 +18,7 @@ InteractBase.libraries(::Bulma) = [
         "https://use.fontawesome.com/releases/v5.0.7/js/all.js"
     ]
 
-InteractBase.setbackend(Bulma())
+InteractBase.settheme!(Bulma())
 
 include("widgets.jl")
 
