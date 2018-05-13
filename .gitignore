@@ -2,3 +2,8 @@
 *.jl.*.cov
 *.jl.mem
 *play.jl
+assets/bulma.min.css
+assets/bulma-slider.min.css
+assets/bulma-switch.min.css
+assets/bulma-checkradio.min.css
+assets/all.js

@@ -11,12 +11,12 @@ export Bulma
 struct Bulma<:InteractBase.WidgetTheme; end
 
 InteractBase.libraries(::Bulma) = [
-        "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css",
-        "https://cdn.jsdelivr.net/npm/bulma-extensions@1.0.14/bulma-slider/dist/bulma-slider.min.css",
-        "https://cdn.jsdelivr.net/npm/bulma-extensions@1.0.14/bulma-switch/dist/bulma-switch.min.css",
-        "https://cdn.jsdelivr.net/npm/bulma-extensions@1.0.14/bulma-checkradio/dist/bulma-checkradio.min.css",
-        "https://use.fontawesome.com/releases/v5.0.7/js/all.js"
-    ]
+    "/pkg/InteractBulma/bulma.min.css",
+    "/pkg/InteractBulma/bulma-slider.min.css",
+    "/pkg/InteractBulma/bulma-switch.min.css",
+    "/pkg/InteractBulma/bulma-checkradio.min.css",
+    "/pkg/InteractBulma/all.js"
+]
 
 InteractBase.settheme!(Bulma())
 
