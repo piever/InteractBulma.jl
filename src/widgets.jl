@@ -1,5 +1,21 @@
-filepicker(::Bulma, args...; class="", kwargs...) =
-    filepicker(NativeHTML(), args...; class="input $class", kwargs...)
+function filepicker(::Bulma, args...; class="", label = "Choose a file...", kwargs...)
+    postprocess = t ->
+    dom"div.file"(
+        dom"label.file-label"(
+            t,
+            dom"span.file-cta"(
+                dom"span.file-icon"(
+                    dom"i.fas.fa-upload"()
+                ),
+                dom"span.file-label"(
+                    label
+                )
+            ),
+            dom"span.file-name"("{{filename == '' ? 'No file chosen' : filename}}")
+        )
+    )
+    filepicker(NativeHTML(), args...; postprocess = postprocess, class="file-input $class", kwargs...)
+end
 
 autocomplete(::Bulma, args...; class="", kwargs...) = autocomplete(NativeHTML(), args...; class="input $class", kwargs...)
 
