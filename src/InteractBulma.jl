@@ -3,7 +3,7 @@ module InteractBulma
 using Reexport
 @reexport using InteractBase
 using WebIO, Vue
-import InteractBase: choosefile, autocomplete, input, dropdown, checkbox, toggle, textbox, button, slider
+import InteractBase: filepicker, autocomplete, input, dropdown, checkbox, toggle, textbox, button, slider
 import InteractBase: NativeHTML
 
 export Bulma

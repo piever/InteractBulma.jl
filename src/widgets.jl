@@ -1,10 +1,10 @@
-choosefile(::Bulma, args...; class="", kwargs...) =
-    choosefile(NativeHTML(), args...; class="input $class", kwargs...)
+filepicker(::Bulma, args...; class="", kwargs...) =
+    filepicker(NativeHTML(), args...; class="input $class", kwargs...)
 
 autocomplete(::Bulma, args...; class="", kwargs...) = autocomplete(NativeHTML(), args...; class="input $class", kwargs...)
 
-dropdown(::Bulma, args...; class="", kwargs...) =
-    dropdown(NativeHTML(), args...; postprocess = dom"div.select", class="input $class", kwargs...)
+dropdown(::Bulma, options::Associative; class="", kwargs...) =
+    dropdown(NativeHTML(), options; postprocess = dom"div.select", class="input $class", kwargs...)
 
 checkbox(::Bulma, args...; class="", kwargs...) =
     checkbox(NativeHTML(), args...; class="is-checkradio $class", kwargs...)
