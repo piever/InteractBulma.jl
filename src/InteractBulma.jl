@@ -17,19 +17,24 @@ import InteractBase:
     radiobuttons,
     radio,
     wrap,
+    wdglabel,
     NativeHTML
 
 export Bulma
 
 struct Bulma<:InteractBase.WidgetTheme; end
 
-InteractBase.libraries(::Bulma) = [
-    "/pkg/InteractBulma/bulma.min.css",
-    "/pkg/InteractBulma/bulma-slider.min.css",
-    "/pkg/InteractBulma/bulma-switch.min.css",
-    "/pkg/InteractBulma/bulma-checkradio.min.css",
-    "/pkg/InteractBulma/all.js"
-]
+function InteractBase.libraries(::Bulma)
+    bulmalibs = isfile(joinpath(dirname(@__DIR__), "assets", "main.css")) ?
+        ["/pkg/InteractBulma/main.css"] :
+        [
+            "/pkg/InteractBulma/bulma.min.css",
+            "/pkg/InteractBulma/bulma-slider.min.css",
+            "/pkg/InteractBulma/bulma-switch.min.css",
+            "/pkg/InteractBulma/bulma-checkradio.min.css",
+        ]
+    vcat("/pkg/InteractBulma/all.js", bulmalibs)
+end
 
 InteractBase.settheme!(Bulma())
 

@@ -56,7 +56,7 @@ function radiobuttons(T::Bulma, options::Associative; outer = identity, outer_at
     outerfunction = function (args...)
         outer(Node(:div, className = "field", attributes = outer_attributes))(Iterators.flatten(args)...)
     end
-    InteractBase._radiobuttons(T, options::Associative; outer = outerfunction, kwargs...) |> wrap
+    radiobuttons(NativeHTML(), options::Associative; radiotype = T, outer = outerfunction, kwargs...) |> wrap
 end
 
 
