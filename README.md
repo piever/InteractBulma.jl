@@ -7,3 +7,5 @@ Pkg.clone("https://github.com/piever/InteractBase.jl")
 Pkg.clone("https://github.com/piever/InteractBulma.jl")
 Pkg.build("InteractBulma")
 ```
+
+To learn how to use this package, check out the [InteractBase documentation](https://piever.github.io/InteractBase.jl/latest/).
