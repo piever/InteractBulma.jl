@@ -2,7 +2,7 @@ module InteractBulma
 
 using Reexport
 @reexport using InteractBase
-using WebIO, Vue, DataStructures
+using WebIO, Vue, DataStructures, CSSUtil
 import InteractBase:
     filepicker,
     autocomplete,
@@ -25,7 +25,7 @@ export Bulma
 struct Bulma<:InteractBase.WidgetTheme; end
 
 function InteractBase.libraries(::Bulma)
-    bulmalibs = isfile(joinpath(dirname(@__DIR__), "assets", "main.css")) ?
+    bulmalibs = InteractBase.isijulia() ?
         ["/pkg/InteractBulma/main.css"] :
         [
             "/pkg/InteractBulma/bulma.min.css",
