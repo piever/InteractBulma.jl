@@ -20,9 +20,6 @@ function filepicker(::Bulma, args...; class="", label = "Choose a file...", kwar
     filepicker(NativeHTML(), args...; postprocess = postprocess, class="interactbulma file-input $class", kwargs...) |> wrap
 end
 
-autocomplete(::Bulma, args...; class="", kwargs...) =
-    autocomplete(NativeHTML(), args...; class="interactbulma input $class", kwargs...) |> wrap
-
 function dropdown(T::Bulma, options::Associative; label = nothing, class="", outer = dom"div.interactbulma"∘vbox, kwargs...)
     s = dropdown(NativeHTML(), options; label = nothing, postprocess = dom"div.select", class="interactbulma input $class", kwargs...)
     label == nothing && return wrap(s)
