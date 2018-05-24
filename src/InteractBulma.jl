@@ -38,6 +38,18 @@ end
 
 InteractBase.settheme!(Bulma())
 
+InteractBase.manipulateinnercontainer(::Bulma, args...) =
+    dom"div.interactbulma[style=margin-left:auto; margin-right:auto; display:block;]"(args...)
+
+function InteractBase.manipulateoutercontainer(::Bulma, args...)
+    Node(:div,
+        Node(:div, className = "column interactbulma")(),
+        Node(:div, args..., className = "column is-10 interactbulma"),
+        Node(:div, className = "column interactbulma")(),
+        className = "columns interactbulma"
+    )
+end
+
 include("widgets.jl")
 
 end # module
