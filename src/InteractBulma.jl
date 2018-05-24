@@ -39,14 +39,17 @@ end
 InteractBase.settheme!(Bulma())
 
 InteractBase.manipulateinnercontainer(::Bulma, args...) =
-    dom"div.interactbulma[style=margin-left:auto; margin-right:auto; display:block;]"(args...)
+    Node(:div,
+        Node(:div, className = "column interactbulma")(),
+        Node(:div, args..., className = "column is-8 interactbulma"),
+        Node(:div, className = "column interactbulma")(),
+        className = "columns interactbulma is-mobile"
+    )
 
 function InteractBase.manipulateoutercontainer(::Bulma, args...)
     Node(:div,
-        Node(:div, className = "column interactbulma")(),
-        Node(:div, args..., className = "column is-10 interactbulma"),
-        Node(:div, className = "column interactbulma")(),
-        className = "columns interactbulma"
+        args...,
+        className = "interactbulma"
     )
 end
 

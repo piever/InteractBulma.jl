@@ -35,8 +35,21 @@ toggle(s::Bulma, args...; class="", kwargs...) =
 textbox(::Bulma, label=""; value="", class="", kwargs...) =
     input(NativeHTML(), value; typ="text", class="interactbulma input $class", placeholder=label, kwargs...) |> wrap
 
-slider(::Bulma, args...; class="is-fullwidth", kwargs...) =
-    slider(NativeHTML(), args...; class="interactbulma slider $class", kwargs...) |> wrap
+function slider(::Bulma, args...; label=nothing, showvalue=true, class="is-fullwidth", kwargs...)
+    s = gensym()
+    postprocess = function (t)
+        (label == nothing) && !showvalue && return t
+        dom"div.columns.is-mobile[style=align-items:center;]"(
+            dom"div.column[style=text-align:right;]"(dom"div"(label)),
+            dom"div.column.is-8"(t),
+            dom"div.column"(
+                showvalue ? dom"div"("{{value}}") : dom"div"()
+            )
+        )
+    end
+    slider(NativeHTML(), args...;
+        class="interactbulma slider $class", id = s, postprocess = postprocess, kwargs...) |> wrap
+end
 
 button(::Bulma, args...; class= "is-primary", kwargs...) =
     button(NativeHTML(), args...; class="interactbulma button $class", kwargs...) |> wrap
@@ -44,10 +57,23 @@ button(::Bulma, args...; class= "is-primary", kwargs...) =
 input(::Bulma, args...; class="", kwargs...) =
     input(NativeHTML(), args...; class="interactbulma input $class", kwargs...) |> wrap
 
-togglebuttons(::Bulma, options::Associative; class="is-fullwidth", outer = identity, outer_attributes = Dict(), activeclass = "is-primary is-selected", kwargs...) =
+function togglebuttons(::Bulma, options::Associative;
+    label=nothing, class="is-fullwidth", outer = identity, outer_attributes = Dict(), activeclass = "is-primary is-selected", kwargs...)
+
+    postprocess = function (t)
+        label == nothing && return t
+        dom"div.columns.is-mobile[style=align-items:center;]"(
+            dom"div.column[style=text-align:right;]"(dom"div"(label)),
+            dom"div.column.is-8"(t),
+            dom"div.column"(dom"div"())
+        )
+    end
+
     togglebuttons(NativeHTML(), options;
-        outer = outer∘Node(:div, className = "interactbulma field is-grouped has-addons is-oneline is-centered", attributes = outer_attributes),
-        class = "button $class", activeclass = activeclass, tag = :span, kwargs...) |> wrapclass
+        outer = postprocess∘outer∘Node(
+            :div, className = "interactbulma field is-grouped has-addons is-oneline is-centered", attributes = outer_attributes
+        ), class = "button $class", activeclass = activeclass, tag = :span, kwargs...) |> wrapclass
+end
 
 tabs(::Bulma, options::Associative; class="", outer = identity, outer_attributes = Dict(), activeclass = "is-active", kwargs...) =
     tabs(NativeHTML(), options;
