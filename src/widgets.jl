@@ -39,10 +39,10 @@ function slider(::Bulma, args...; label=nothing, showvalue=true, class="is-fullw
     s = gensym()
     postprocess = function (t)
         (label == nothing) && !showvalue && return t
-        dom"div.columns.is-mobile[style=align-items:center;]"(
-            dom"div.column[style=text-align:right;]"(dom"div"(label)),
-            dom"div.column.is-8"(t),
-            dom"div.column"(
+        dom"div.columns.interactbulma.is-mobile[style=align-items:center;]"(
+            dom"div.column.interactbulma[style=text-align:right;]"(dom"div"(label)),
+            dom"div.column.interactbulma.is-8"(t),
+            dom"div.column.interactbulma"(
                 showvalue ? dom"div"("{{value}}") : dom"div"()
             )
         )
@@ -62,10 +62,10 @@ function togglebuttons(::Bulma, options::Associative;
 
     postprocess = function (t)
         label == nothing && return t
-        dom"div.columns.is-mobile[style=align-items:center;]"(
-            dom"div.column[style=text-align:right;]"(dom"div"(label)),
-            dom"div.column.is-8"(t),
-            dom"div.column"(dom"div"())
+        dom"div.columns.interactbulma.is-mobile[style=align-items:center;]"(
+            dom"div.column.interactbulma[style=text-align:right;]"(dom"div"(label)),
+            dom"div.column.interactbulma.is-8"(t),
+            dom"div.column.interactbulma"(dom"div"())
         )
     end
 
