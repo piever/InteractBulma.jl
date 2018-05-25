@@ -35,7 +35,9 @@ toggle(s::Bulma, args...; class="", kwargs...) =
 textbox(::Bulma, label=""; value="", class="", kwargs...) =
     input(NativeHTML(), value; typ="text", class="interactbulma input $class", placeholder=label, kwargs...) |> wrap
 
-function slider(::Bulma, args...; label=nothing, showvalue=true, class="is-fullwidth", kwargs...)
+function slider(::Bulma, vals::Range;
+    label=nothing, showvalue=true, class="is-fullwidth", kwargs...)
+
     s = gensym()
     postprocess = function (t)
         (label == nothing) && !showvalue && return t
@@ -43,11 +45,11 @@ function slider(::Bulma, args...; label=nothing, showvalue=true, class="is-fullw
             dom"div.column.interactbulma[style=text-align:right;]"(dom"div"(label)),
             dom"div.column.interactbulma.is-8"(t),
             dom"div.column.interactbulma"(
-                showvalue ? dom"div"("{{value}}") : dom"div"()
+                showvalue ? dom"div"("{{displayedvalue}}") : dom"div"()
             )
         )
     end
-    slider(NativeHTML(), args...;
+    slider(NativeHTML(), vals;
         class="interactbulma slider $class", id = s, postprocess = postprocess, kwargs...) |> wrap
 end
 
@@ -85,7 +87,7 @@ function radiobuttons(T::Bulma, options::Associative; outer = identity, outer_at
     outerfunction = function (args...)
         outer(Node(:div, className = "field", attributes = outer_attributes))(Iterators.flatten(args)...)
     end
-    radiobuttons(NativeHTML(), options::Associative; radiotype = T, outer = outerfunction, kwargs...) |> wrap
+    radiobuttons(NativeHTML(), options::Associative; outer = outerfunction, kwargs...) |> wrap
 end
 
 
