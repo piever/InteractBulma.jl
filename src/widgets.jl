@@ -32,22 +32,9 @@ checkbox(::Bulma, args...; class="", kwargs...) =
 toggle(s::Bulma, args...; class="", kwargs...) =
     checkbox(NativeHTML(), args...; class="interactbulma switch $class", kwargs...) |> wrap
 
-function slider(::Bulma, vals::Range;
-    label=nothing, showvalue=true, class="is-fullwidth", kwargs...)
-
-    s = gensym()
-    postprocess = function (t)
-        (label == nothing) && !showvalue && return t
-        dom"div.columns.interactbulma.is-mobile[style=align-items:center;]"(
-            dom"div.column.interactbulma[style=text-align:right;]"(dom"div"(label)),
-            dom"div.column.interactbulma.is-8"(t),
-            dom"div.column.interactbulma"(
-                showvalue ? dom"div"("{{displayedvalue}}") : dom"div"()
-            )
-        )
-    end
+function slider(::Bulma, vals::Range; class="is-fullwidth", kwargs...)
     slider(NativeHTML(), vals;
-        class="interactbulma slider $class", id = s, postprocess = postprocess, kwargs...) |> wrap
+        class="interactbulma slider $class", kwargs...) |> wrapclass
 end
 
 button(::Bulma, args...; class= "is-primary", kwargs...) =
@@ -57,19 +44,10 @@ input(::Bulma, args...; class="", kwargs...) =
     input(NativeHTML(), args...; class="interactbulma input $class", kwargs...) |> wrap
 
 function togglebuttons(::Bulma, options::Associative;
-    label=nothing, class="is-fullwidth", outer = identity, outer_attributes = Dict(), activeclass = "is-primary is-selected", kwargs...)
-
-    postprocess = function (t)
-        label == nothing && return t
-        dom"div.columns.interactbulma.is-mobile[style=align-items:center;]"(
-            dom"div.column.interactbulma[style=text-align:right;]"(dom"div"(label)),
-            dom"div.column.interactbulma.is-8"(t),
-            dom"div.column.interactbulma"(dom"div"())
-        )
-    end
+    class="is-fullwidth", outer = identity, outer_attributes = Dict(), activeclass = "is-primary is-selected", kwargs...)
 
     togglebuttons(NativeHTML(), options;
-        outer = postprocess∘outer∘Node(
+        outer = outer∘Node(
             :div, className = "interactbulma field is-grouped has-addons is-oneline is-centered", attributes = outer_attributes
         ), class = "button $class", activeclass = activeclass, tag = :span, kwargs...) |> wrapclass
 end
