@@ -32,9 +32,6 @@ checkbox(::Bulma, args...; class="", kwargs...) =
 toggle(s::Bulma, args...; class="", kwargs...) =
     checkbox(NativeHTML(), args...; class="interactbulma switch $class", kwargs...) |> wrap
 
-textbox(::Bulma, label=""; value="", class="", kwargs...) =
-    input(NativeHTML(), value; typ="text", class="interactbulma input $class", placeholder=label, kwargs...) |> wrap
-
 function slider(::Bulma, vals::Range;
     label=nothing, showvalue=true, class="is-fullwidth", kwargs...)
 
