@@ -27,7 +27,7 @@ function dropdown(T::Bulma, options::Associative; label = nothing, class="", out
 end
 
 checkbox(::Bulma, args...; class="", kwargs...) =
-    checkbox(NativeHTML(), args...; class="interactbulma is-checkradio $class", kwargs...) |> wrap
+    checkbox(NativeHTML(), args...; class="interactbulma is-checkradio $class", kwargs...)
 
 toggle(s::Bulma, args...; class="", kwargs...) =
     checkbox(NativeHTML(), args...; class="interactbulma switch $class", kwargs...) |> wrap
