@@ -23,7 +23,7 @@ end
 function dropdown(T::Bulma, options::Associative; label = nothing, class="", outer = dom"div.interactbulma"∘vbox, kwargs...)
     s = dropdown(NativeHTML(), options; label = nothing, postprocess = dom"div.select", class="interactbulma input $class", kwargs...)
     label == nothing && return wrap(s)
-    wrap(s, t->dom"div.interactbulma"(dom"div.field"(s), wdglabel(T, label)))
+    wrap(s, t->dom"div.interactbulma"(s, wdglabel(T, label)))
 end
 
 checkbox(::Bulma, args...; class="", kwargs...) =
