@@ -1,7 +1,7 @@
 wrap(::Bulma, ui, f = dom"div.field.interactbulma") = wrap(NativeHTML(), ui, f)
 wrapclass(ui) = wrap(ui, dom"div.interactbulma")
 
-function filepicker(::Bulma, args...; class="", label = "Choose a file...", kwargs...)
+function filepicker(::Bulma, label = "Choose a file..."; class="", kwargs...)
     postprocess = t ->
     dom"div.file"(
         dom"label.file-label"(
@@ -17,7 +17,7 @@ function filepicker(::Bulma, args...; class="", label = "Choose a file...", kwar
             dom"span.file-name"("{{filename == '' ? 'No file chosen' : filename}}")
         )
     )
-    filepicker(NativeHTML(), args...; postprocess = postprocess, class="interactbulma file-input $class", kwargs...) |> wrap
+    filepicker(NativeHTML(), label; postprocess = postprocess, class="interactbulma file-input $class", kwargs...) |> wrap
 end
 
 function dropdown(T::Bulma, options::Associative; label = nothing, class="", outer = dom"div.interactbulma"∘vbox, kwargs...)
