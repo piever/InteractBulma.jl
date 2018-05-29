@@ -2,29 +2,27 @@ wrap(::Bulma, ui, f = dom"div.field.interactbulma") = wrap(NativeHTML(), ui, f)
 wrapclass(ui) = wrap(ui, dom"div.interactbulma")
 
 function filepicker(::Bulma, label = "Choose a file..."; class="", kwargs...)
-    postprocess = t ->
-    dom"div.file"(
-        dom"label.file-label"(
-            t,
-            dom"span.file-cta"(
-                dom"span.file-icon"(
-                    dom"i.fas.fa-upload"()
+    fp = filepicker(NativeHTML(), label; class="interactbulma file-input $class", kwargs...)
+    fp.dom =
+        dom"div.file"(
+            dom"label.file-label"(
+                fp.dom,
+                dom"span.file-cta"(
+                    dom"span.file-icon"(
+                        dom"i.fas.fa-upload"()
+                    ),
+                    dom"span.file-label"(
+                        label
+                    )
                 ),
-                dom"span.file-label"(
-                    label
-                )
-            ),
-            dom"span.file-name"("{{filename == '' ? 'No file chosen' : filename}}")
+                dom"span.file-name"("{{filename == '' ? 'No file chosen' : filename}}")
+            )
         )
-    )
-    filepicker(NativeHTML(), label; postprocess = postprocess, class="interactbulma file-input $class", kwargs...) |> wrap
+    wrap(fp)
 end
 
-function dropdown(T::Bulma, options::Associative; label = nothing, class="", outer = dom"div.interactbulma"∘vbox, kwargs...)
-    s = dropdown(NativeHTML(), options; label = nothing, postprocess = dom"div.select", class="interactbulma input $class", kwargs...)
-    label == nothing && return wrap(s)
-    wrap(s, t->dom"div.interactbulma"(s, wdglabel(T, label)))
-end
+dropdown(T::Bulma, options::Associative; class="", kwargs...) =
+    dropdown(NativeHTML(), options; class="interactbulma input $class", kwargs...) |> wrap
 
 checkbox(::Bulma, args...; class="", kwargs...) =
     checkbox(NativeHTML(), args...; class="interactbulma is-checkradio $class", kwargs...)
