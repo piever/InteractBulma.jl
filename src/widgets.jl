@@ -24,11 +24,11 @@ end
 dropdown(T::Bulma, options::Associative; class="", kwargs...) =
     dropdown(NativeHTML(), options; class="interactbulma input $class", kwargs...) |> wrap
 
-checkbox(::Bulma, args...; class="", kwargs...) =
-    checkbox(NativeHTML(), args...; class="interactbulma is-checkradio $class", kwargs...)
+checkbox(::Bulma; class="", kwargs...) =
+    checkbox(NativeHTML(); class="interactbulma is-checkradio $class", kwargs...)
 
-toggle(s::Bulma, args...; class="", kwargs...) =
-    checkbox(NativeHTML(), args...; class="interactbulma switch $class", kwargs...) |> wrap
+toggle(s::Bulma; class="", kwargs...) =
+    checkbox(NativeHTML(); class="interactbulma switch $class", kwargs...)
 
 function entry(::Bulma, style, args...; class="", kwargs...)
     extraclass = (style=="toggle") ? "switch" : "is-checkradio"
