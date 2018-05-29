@@ -18,6 +18,7 @@ import InteractBase:
     radio,
     wrap,
     wdglabel,
+    entry,
     NativeHTML
 
 export Bulma

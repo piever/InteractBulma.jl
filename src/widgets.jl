@@ -32,6 +32,11 @@ checkbox(::Bulma, args...; class="", kwargs...) =
 toggle(s::Bulma, args...; class="", kwargs...) =
     checkbox(NativeHTML(), args...; class="interactbulma switch $class", kwargs...) |> wrap
 
+function entry(::Bulma, style, args...; class="", kwargs...)
+    extraclass = (style=="toggle") ? "switch" : "is-checkradio"
+    entry(NativeHTML(), style, args...; class="interactbulma $extraclass $class", outer=dom"div.field.interactbulma", kwargs...)
+end
+
 function slider(::Bulma, vals::Range; class="is-fullwidth", kwargs...)
     slider(NativeHTML(), vals;
         class="interactbulma slider $class", kwargs...) |> wrapclass
