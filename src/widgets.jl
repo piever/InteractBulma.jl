@@ -1,7 +1,7 @@
 wrap(::Bulma, ui, f = dom"div.field.interactbulma") = wrap(NativeHTML(), ui, f)
 wrapclass(ui) = wrap(ui, dom"div.interactbulma")
 
-function filepicker(::Bulma, label = "Choose a file..."; class="", kwargs...)
+function filepicker(::Bulma, lbl = "Choose a file..."; label=lbl, class="", kwargs...)
     fp = filepicker(NativeHTML(), label; class="interactbulma file-input $class", kwargs...)
     fp.dom =
         dom"div.file"(
