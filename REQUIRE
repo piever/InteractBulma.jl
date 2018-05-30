@@ -3,6 +3,6 @@ Reexport
 InteractBase 0.2.0
 WebIO
 Vue
-DataStructures,
+DataStructures
 Colors
 Observables
