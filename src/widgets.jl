@@ -46,6 +46,9 @@ button(::Bulma, args...; class= "is-primary", kwargs...) =
 input(::Bulma, args...; class="", kwargs...) =
     input(NativeHTML(), args...; class="interactbulma input $class", kwargs...) |> wrap
 
+textarea(::Bulma, args...; class="", kwargs...) =
+    textarea(NativeHTML(), args...; class="interactbulma textarea $class", kwargs...) |> wrap
+
 function togglebuttons(::Bulma, options::Associative;
     class="is-fullwidth", outer = identity, outer_attributes = Dict(), activeclass = "is-primary is-selected", kwargs...)
 

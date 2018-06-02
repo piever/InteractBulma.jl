@@ -23,6 +23,8 @@ import InteractBase:
     entry,
     NativeHTML
 
+import InteractBase: textarea
+
 export Bulma
 
 struct Bulma<:InteractBase.WidgetTheme; end
