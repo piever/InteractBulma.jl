@@ -1,3 +1,5 @@
+__precompile__()
+
 module InteractBulma
 
 using Reexport
@@ -37,7 +39,10 @@ function InteractBase.libraries(::Bulma)
     vcat("/pkg/InteractBulma/all.js", bulmalibs)
 end
 
-InteractBase.settheme!(Bulma())
+function __init__()
+    InteractBase.settheme!(Bulma())
+    nothing
+end
 
 function InteractBase.manipulateoutercontainer(::Bulma, args...)
     Node(:div,
