@@ -3,10 +3,10 @@ wrapclass(ui) = wrap(ui, dom"div.interactbulma")
 
 function filepicker(::Bulma, lbl = "Choose a file..."; label=lbl, class="", kwargs...)
     fp = filepicker(NativeHTML(), label; class="interactbulma file-input $class", kwargs...)
-    fp.dom =
+    scope(fp).dom =
         dom"div.file"(
             dom"label.file-label"(
-                fp.dom,
+                scope(fp).dom,
                 dom"span.file-cta"(
                     dom"span.file-icon"(
                         dom"i.fas.fa-upload"()
