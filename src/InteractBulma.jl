@@ -21,7 +21,8 @@ import InteractBase:
     wrap,
     wdglabel,
     entry,
-    NativeHTML
+    NativeHTML,
+    scope
 
 import InteractBase: textarea
 
