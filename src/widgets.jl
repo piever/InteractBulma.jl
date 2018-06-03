@@ -28,7 +28,7 @@ checkbox(::Bulma; class="", kwargs...) =
     checkbox(NativeHTML(); class="interactbulma is-checkradio $class", kwargs...)
 
 toggle(s::Bulma; class="", kwargs...) =
-    checkbox(NativeHTML(); class="interactbulma switch $class", kwargs...)
+    toggle(NativeHTML(); class="interactbulma switch $class", kwargs...)
 
 function entry(::Bulma, style, args...; class="", kwargs...)
     extraclass = (style=="toggle") ? "switch" : "is-checkradio"
