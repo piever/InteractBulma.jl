@@ -22,7 +22,8 @@ import InteractBase:
     wdglabel,
     entry,
     NativeHTML,
-    scope
+    scope,
+    getclass
 
 import InteractBase: textarea
 
@@ -54,6 +55,7 @@ function InteractBase.manipulateoutercontainer(::Bulma, args...)
     )
 end
 
+include("classes.jl")
 include("widgets.jl")
 
 end # module

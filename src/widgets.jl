@@ -1,6 +1,3 @@
-wrap(::Bulma, ui, f = dom"div.field.interactbulma") = wrap(NativeHTML(), ui, f)
-wrapclass(ui) = wrap(ui, dom"div.interactbulma")
-
 function filepicker(::Bulma, lbl = "Choose a file..."; label=lbl, class="", kwargs...)
     fp = filepicker(NativeHTML(), label; class="interactbulma file-input $class", kwargs...)
     scope(fp).dom =
@@ -18,59 +15,8 @@ function filepicker(::Bulma, lbl = "Choose a file..."; label=lbl, class="", kwar
                 dom"span.file-name"("{{filename == '' ? 'No file chosen' : filename}}")
             )
         )
-    wrap(fp)
+    isdefined(InteractBase, :wrapfield) ? InteractBase.wrapfield(fp) : fp
 end
-
-dropdown(T::Bulma, options::Associative; class="", kwargs...) =
-    dropdown(NativeHTML(), options; class="interactbulma input $class", kwargs...) |> wrap
-
-checkbox(::Bulma; class="", kwargs...) =
-    checkbox(NativeHTML(); class="interactbulma is-checkradio $class", kwargs...)
-
-toggle(s::Bulma; class="", kwargs...) =
-    toggle(NativeHTML(); class="interactbulma switch $class", kwargs...)
-
-function entry(::Bulma, style, args...; class="", kwargs...)
-    extraclass = (style=="toggle") ? "switch" : "is-checkradio"
-    entry(NativeHTML(), style, args...; class="interactbulma $extraclass $class", outer=dom"div.field.interactbulma", kwargs...)
-end
-
-function slider(::Bulma, vals::Range; class="is-fullwidth", kwargs...)
-    slider(NativeHTML(), vals;
-        class="interactbulma slider $class", kwargs...) |> wrapclass
-end
-
-button(::Bulma, args...; class= "is-primary", kwargs...) =
-    button(NativeHTML(), args...; class="interactbulma button $class", kwargs...) |> wrap
-
-input(::Bulma, args...; class="", kwargs...) =
-    input(NativeHTML(), args...; class="interactbulma input $class", kwargs...) |> wrap
-
-textarea(::Bulma, args...; class="", kwargs...) =
-    textarea(NativeHTML(), args...; class="interactbulma textarea $class", kwargs...) |> wrap
-
-function togglebuttons(::Bulma, options::Associative;
-    class="is-fullwidth", outer = identity, outer_attributes = Dict(), activeclass = "is-primary is-selected", kwargs...)
-
-    togglebuttons(NativeHTML(), options;
-        outer = outer∘Node(
-            :div, className = "interactbulma field is-grouped has-addons is-oneline is-centered", attributes = outer_attributes
-        ), class = "button $class", activeclass = activeclass, tag = :span, kwargs...) |> wrapclass
-end
-
-tabs(::Bulma, options::Associative; class="", outer = identity, outer_attributes = Dict(), activeclass = "is-active", kwargs...) =
-    tabs(NativeHTML(), options;
-        outer = outer∘Node(:ul, className = "interactbulma tabs", attributes = outer_attributes),
-        class = class, activeclass = activeclass, kwargs...) |> wrapclass
-
-
-function radiobuttons(T::Bulma, options::Associative; outer = identity, outer_attributes = Dict(), kwargs...)
-    outerfunction = function (args...)
-        outer(Node(:div, className = "field", attributes = outer_attributes))(Iterators.flatten(args)...)
-    end
-    radiobuttons(NativeHTML(), options::Associative; outer = outerfunction, kwargs...) |> wrap
-end
-
 
 function radio(T::Bulma, s, key, val, vmodel; class = "", kwargs...)
     id = string(gensym())
