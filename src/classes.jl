@@ -4,7 +4,8 @@ function getclass(T::Bulma, arg, typ...)
         typ==() && return "interactbulma input"
         typ[1]=="checkbox" && return "interactbulma is-checkradio"
         typ[1]=="toggle" && return "interactbulma switch"
-        typ[1]=="range" && return "interactbulma slider"
+        typ==("range",) && return "interactbulma slider"
+        typ==("range", "fullwidth") && return "interactbulma slider is-fullwidth"
 
         if typ[1]=="file"
             typ[2:end]==() && return "file"
