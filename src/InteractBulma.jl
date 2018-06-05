@@ -40,7 +40,7 @@ function InteractBase.libraries(::Bulma)
             "/pkg/InteractBulma/bulma-switch.min.css",
             "/pkg/InteractBulma/bulma-checkradio.min.css",
         ]
-    vcat("/pkg/InteractBulma/all.js", bulmalibs)
+    vcat("/pkg/InteractBase/all.js", bulmalibs)
 end
 
 function __init__()

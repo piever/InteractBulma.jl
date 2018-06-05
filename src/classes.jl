@@ -1,9 +1,20 @@
 function getclass(T::Bulma, arg, typ...)
     length(typ) > 0 && last(typ) == "label" && return ""
     if arg == :input
-        typ==("checkbox",) && return "interactbulma is-checkradio"
-        typ==("toggle",) && return "interactbulma switch"
-        typ==("range",) && return "interactbulma slider"
+        typ==() && return "interactbulma input"
+        typ[1]=="checkbox" && return "interactbulma is-checkradio"
+        typ[1]=="toggle" && return "interactbulma switch"
+        typ[1]=="range" && return "interactbulma slider"
+
+        if typ[1]=="file"
+            typ[2:end]==() && return "file"
+            typ[2:end]==("span",) && return "file-cta"
+            typ[2:end]==("span", "icon") && return "file-icon"
+            typ[2:end]==("span","label") && return "file-label"
+            typ[2:end]==("icon",) && return "fas fa-upload"
+            typ[2:end]==("label",) && return "file-label"
+            typ[2:end]==("name",) && return "file-name"
+        end
         return "interactbulma input"
     elseif arg == :dropdown
         return "interactbulma input"
