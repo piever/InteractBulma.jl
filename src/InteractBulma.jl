@@ -31,16 +31,23 @@ export Bulma
 
 struct Bulma<:InteractBase.WidgetTheme; end
 
+const main_css = joinpath(@__DIR__, "..", "assets", "main.css")
+const bulma_min_css = joinpath(@__DIR__, "..", "assets", "bulma.min.css")
+const bulma_slider_min_css = joinpath(@__DIR__, "..", "assets", "bulma-slider.min.css")
+const bulma_switch_min_css = joinpath(@__DIR__, "..", "assets", "bulma-switch.min.css")
+const bulma_checkradio_min_css = joinpath(@__DIR__, "..", "assets", "bulma-checkradio.min.css")
+const all_js = joinpath(Pkg.dir("InteractBase"), "assets", "all.js")
+
 function InteractBase.libraries(::Bulma)
     bulmalibs = InteractBase.isijulia() ?
-        ["/pkg/InteractBulma/main.css"] :
+        [main_css] :
         [
-            "/pkg/InteractBulma/bulma.min.css",
-            "/pkg/InteractBulma/bulma-slider.min.css",
-            "/pkg/InteractBulma/bulma-switch.min.css",
-            "/pkg/InteractBulma/bulma-checkradio.min.css",
+            bulma_min_css,
+            bulma_slider_min_css,
+            bulma_switch_min_css,
+            bulma_checkradio_min_css,
         ]
-    vcat("/pkg/InteractBase/all.js", bulmalibs)
+    vcat(all_js, bulmalibs)
 end
 
 function __init__()
