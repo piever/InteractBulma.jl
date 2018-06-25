@@ -36,7 +36,6 @@ const bulma_min_css = joinpath(@__DIR__, "..", "assets", "bulma.min.css")
 const bulma_slider_min_css = joinpath(@__DIR__, "..", "assets", "bulma-slider.min.css")
 const bulma_switch_min_css = joinpath(@__DIR__, "..", "assets", "bulma-switch.min.css")
 const bulma_checkradio_min_css = joinpath(@__DIR__, "..", "assets", "bulma-checkradio.min.css")
-const all_js = joinpath(Pkg.dir("InteractBase"), "assets", "all.js")
 
 function InteractBase.libraries(::Bulma)
     bulmalibs = InteractBase.isijulia() ?
@@ -47,7 +46,7 @@ function InteractBase.libraries(::Bulma)
             bulma_switch_min_css,
             bulma_checkradio_min_css,
         ]
-    vcat(all_js, bulmalibs)
+    vcat(InteractBase.font_awesome, bulmalibs)
 end
 
 function __init__()
@@ -63,6 +62,5 @@ function InteractBase.manipulateoutercontainer(::Bulma, args...)
 end
 
 include("classes.jl")
-include("widgets.jl")
 
 end # module
