@@ -4,27 +4,9 @@ module InteractBulma
 
 using Reexport
 @reexport using InteractBase
-using WebIO, Vue, DataStructures, CSSUtil
-import InteractBase:
-    filepicker,
-    autocomplete,
-    input, dropdown,
-    checkbox,
-    toggle,
-    textbox,
-    button,
-    slider,
-    togglebuttons,
-    tabs,
-    radiobuttons,
-    wrap,
-    wdglabel,
-    entry,
-    NativeHTML,
-    scope,
-    getclass
 
-import InteractBase: textarea
+import InteractBase:
+    getclass
 
 export Bulma
 
