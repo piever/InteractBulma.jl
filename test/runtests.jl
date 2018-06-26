@@ -33,8 +33,7 @@ end
 
     a = spinbox(label = "")
     @test observe(a)[] == nothing
-    @test observe(a, "internalvalue")[] == ""
-    observe(a, "internalvalue")[] = "12"
+    a = spinbox(label = "", value = 12)
     @test observe(a)[] == 12
 
     a = textbox();
@@ -57,10 +56,6 @@ end
 
     v = slider([0, 12, 22], value = 12)
     @test observe(v)[] == 12
-    @test observe(v, "internalvalue")[] == 2
-    observe(v, "internalvalue")[] = 3
-    @test observe(v)[] == 22
-
 end
 
 @testset "options" begin

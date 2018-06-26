@@ -17,7 +17,6 @@ import InteractBase:
     togglebuttons,
     tabs,
     radiobuttons,
-    radio,
     wrap,
     wdglabel,
     entry,
@@ -36,6 +35,7 @@ const bulma_min_css = joinpath(@__DIR__, "..", "assets", "bulma.min.css")
 const bulma_slider_min_css = joinpath(@__DIR__, "..", "assets", "bulma-slider.min.css")
 const bulma_switch_min_css = joinpath(@__DIR__, "..", "assets", "bulma-switch.min.css")
 const bulma_checkradio_min_css = joinpath(@__DIR__, "..", "assets", "bulma-checkradio.min.css")
+const font_awesome = isdefined(InteractBase, :font_awesome) ? InteractBase.font_awesome : joinpath(Pkg.dir("InteractBase"), "assets", "all.js")
 
 function InteractBase.libraries(::Bulma)
     bulmalibs = InteractBase.isijulia() ?
@@ -46,7 +46,7 @@ function InteractBase.libraries(::Bulma)
             bulma_switch_min_css,
             bulma_checkradio_min_css,
         ]
-    vcat(InteractBase.font_awesome, bulmalibs)
+    vcat(font_awesome, bulmalibs)
 end
 
 function __init__()
