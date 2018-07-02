@@ -26,7 +26,7 @@ function getclass(T::Bulma, arg, typ...)
         return "button"
     elseif arg==:tab
         typ==("active",) && return "is-active"
-        return ""
+        return "not-active"
     elseif arg == :textarea
         return "textarea"
     elseif arg==:wdglabel
