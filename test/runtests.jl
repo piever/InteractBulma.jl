@@ -70,8 +70,6 @@ end
     @test observe(a)[] == "b"
     a = togglebuttons(OrderedDict("a" => 1, "b" => 2, "c"=>3))
     @test observe(a)[] == 2
-    a = togglebuttons(OrderedDict("a" => 1, "b" => 2, "c" => 4), value = 3)
-    @test observe(a)[] == 4
 
     a = radiobuttons(["a", "b", "c"])
     @test observe(a)[] == "a"
