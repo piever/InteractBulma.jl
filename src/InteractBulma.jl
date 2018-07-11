@@ -37,13 +37,6 @@ function __init__()
     nothing
 end
 
-function InteractBase.manipulateoutercontainer(::Bulma, args...)
-    Node(:div,
-        args...,
-        className = "interactbulma"
-    )
-end
-
 include("classes.jl")
 
 end # module
