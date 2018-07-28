@@ -10,6 +10,8 @@ deps = [
     "https://cdn.jsdelivr.net/npm/bulma-extensions@1.0.14/bulma-slider/dist/bulma-slider.min.css",
     "https://cdn.jsdelivr.net/npm/bulma-extensions@1.0.14/bulma-switch/dist/bulma-switch.min.css",
     "https://cdn.jsdelivr.net/npm/bulma-extensions@1.0.14/bulma-checkradio/dist/bulma-checkradio.min.css",
+    "https://cdn.jsdelivr.net/npm/bulma-extensions@1.0.14/bulma-accordion/dist/bulma-accordion.min.css",
+    "https://cdn.jsdelivr.net/npm/bulma-extensions@1.0.14/bulma-tooltip/dist/bulma-tooltip.min.css",
 ]
 for dep in deps
     download(dep, joinpath(_pkg_assets, splitdir(dep)[2]))

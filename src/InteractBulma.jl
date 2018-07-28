@@ -6,9 +6,7 @@ using Reexport
 using WebIO
 @reexport using InteractBase
 
-import InteractBase:
-    dropdown,
-    getclass
+import InteractBase: dropdown
 
 export Bulma
 
@@ -18,8 +16,10 @@ const main_css = joinpath(@__DIR__, "..", "assets", "main.css")
 const bulma_min_css = joinpath(@__DIR__, "..", "assets", "bulma.min.css")
 const bulma_slider_min_css = joinpath(@__DIR__, "..", "assets", "bulma-slider.min.css")
 const bulma_switch_min_css = joinpath(@__DIR__, "..", "assets", "bulma-switch.min.css")
+const bulma_accordion_min_css = joinpath(@__DIR__, "..", "assets", "bulma-accordion.min.css")
 const bulma_checkradio_min_css = joinpath(@__DIR__, "..", "assets", "bulma-checkradio.min.css")
-const font_awesome = isdefined(InteractBase, :font_awesome) ? InteractBase.font_awesome : joinpath(Pkg.dir("InteractBase"), "assets", "all.js")
+const bulma_tooltip_min_css = joinpath(@__DIR__, "..", "assets", "bulma-tooltip.min.css")
+const font_awesome = InteractBase.font_awesome
 
 function InteractBase.libraries(::Bulma)
     bulmalibs = InteractBase.isijulia() ?
@@ -28,7 +28,9 @@ function InteractBase.libraries(::Bulma)
             bulma_min_css,
             bulma_slider_min_css,
             bulma_switch_min_css,
+            bulma_accordion_min_css,
             bulma_checkradio_min_css,
+            bulma_tooltip_min_css,
         ]
     vcat(font_awesome, bulmalibs)
 end
@@ -38,7 +40,6 @@ function __init__()
     nothing
 end
 
-include("classes.jl")
 include("widgets.jl")
 
 end # module
