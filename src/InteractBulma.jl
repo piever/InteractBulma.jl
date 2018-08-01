@@ -12,6 +12,7 @@ export Bulma
 
 struct Bulma<:InteractBase.WidgetTheme; end
 
+const custom_css = joinpath(@__DIR__, "..", "assets", "custom.css")
 const main_css = joinpath(@__DIR__, "..", "assets", "main.css")
 const bulma_min_css = joinpath(@__DIR__, "..", "assets", "bulma.min.css")
 const bulma_slider_min_css = joinpath(@__DIR__, "..", "assets", "bulma-slider.min.css")
@@ -25,6 +26,7 @@ function InteractBase.libraries(::Bulma)
     bulmalibs = InteractBase.isijulia() ?
         [main_css] :
         [
+            custom_css,
             bulma_min_css,
             bulma_slider_min_css,
             bulma_switch_min_css,
