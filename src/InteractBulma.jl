@@ -25,7 +25,7 @@ const font_awesome = InteractBase.font_awesome
 
 function InteractBase.libraries(::Bulma)
     bulmalibs = InteractBase.isijulia() ?
-        [main_css] :
+        [main_css, custom_css] :
         [
             custom_css,
             bulma_min_css,
