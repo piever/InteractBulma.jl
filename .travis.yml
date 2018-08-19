@@ -5,7 +5,12 @@ os:
   - osx
 julia:
   - 0.6
+  - 0.7
+  - 1.0
   - nightly
+matrix:
+  allow_failures:
+  - julia: nightly
 notifications:
   email: false
 git:
@@ -30,6 +35,6 @@ matrix:
 #  - julia -e 'Pkg.clone(pwd()); Pkg.build("InteractBulma"); Pkg.test("InteractBulma"; coverage=true)'
 after_success:
   # push coverage results to Coveralls
-  - julia -e 'cd(Pkg.dir("InteractBulma")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
+  - julia -e 'import Pkg; Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
   # push coverage results to Codecov
-  - julia -e 'cd(Pkg.dir("InteractBulma")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+  - julia -e 'import Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
