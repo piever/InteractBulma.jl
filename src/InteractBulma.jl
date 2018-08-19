@@ -3,10 +3,7 @@ __precompile__()
 module InteractBulma
 
 using Reexport
-using WebIO
 @reexport using InteractBase
-
-import InteractBase: dropdown
 
 export Bulma
 
