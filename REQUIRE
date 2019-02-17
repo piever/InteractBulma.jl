@@ -1,3 +1,2 @@
-julia 0.6
-Reexport
+julia 1.0
 InteractBase 0.7.0

@@ -1,9 +1,6 @@
-__precompile__()
-
 module InteractBulma
 
-using Reexport
-@reexport using InteractBase
+import InteractBase
 
 export Bulma
 
@@ -30,11 +27,6 @@ function InteractBase.libraries(::Bulma)
             bulma_tooltip_min_css,
         ]
     vcat(font_awesome, InteractBase.style_css, bulmalibs)
-end
-
-function __init__()
-    InteractBase.settheme!(Bulma())
-    nothing
 end
 
 end # module
