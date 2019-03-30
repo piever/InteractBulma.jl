@@ -1,8 +1,10 @@
 .interact-widget {
+    @import "variables";
     @import "bulma.sass";
     @import "bulma-switch.sass";
     @import "bulma-slider.sass";
     @import "bulma-accordion.sass";
     @import "bulma-checkradio.sass";
     @import "bulma-tooltip.sass";
+    @import "overrides";
 }

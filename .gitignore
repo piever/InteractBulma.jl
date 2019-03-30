@@ -6,4 +6,5 @@ assets/sass/
 *.sass
 *.min.css
 assets/all.js
+assets/_*.scss
 deps/build.log
