@@ -72,9 +72,6 @@ for extension in extensions
     download(extension, joinpath(_pkg_assets, splitdir(extension)[2]))
 end
 
-open(io -> nothing, joinpath(_pkg_assets, "_overrides.scss"), "w")
-open(io -> nothing, joinpath(_pkg_assets, "_variables.scss"), "w")
-
 for file in ["main", "main_confined"]
     sassfile = joinpath(_pkg_assets, "$file.scss")
     Sass.compile_file(sassfile, joinpath(_pkg_assets, "$file.min.css"), output_style = Sass.compressed)
