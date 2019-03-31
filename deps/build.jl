@@ -1,4 +1,3 @@
-using Sass
 const _pkg_root = dirname(dirname(@__FILE__))
 const _pkg_deps = joinpath(_pkg_root,"deps")
 const _pkg_assets = joinpath(_pkg_root,"assets")
@@ -70,9 +69,4 @@ extensions = [
 ]
 for extension in extensions
     download(extension, joinpath(_pkg_assets, splitdir(extension)[2]))
-end
-
-for file in ["main", "main_confined"]
-    sassfile = joinpath(_pkg_assets, "$file.scss")
-    Sass.compile_file(sassfile, joinpath(_pkg_assets, "$file.min.css"), output_style = Sass.compressed)
 end
