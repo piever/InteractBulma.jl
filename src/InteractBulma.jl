@@ -12,7 +12,7 @@ const main_confined_css = joinpath(@__DIR__, "..", "assets", "main_confined.min.
 const font_awesome = InteractBase.font_awesome
 
 function InteractBase.libraries(b::BulmaTheme)
-    bulmalib = joinpath(b.path, InteractBase.isijulia() ? "main_confined.css" : "main.css")
+    bulmalib = joinpath(b.path, InteractBase.isijulia() ? "main_confined.min.css" : "main.min.css")
     vcat(font_awesome, InteractBase.style_css, bulmalib)
 end
 
@@ -40,8 +40,8 @@ function compile_theme(output = mktempdir(); overrides = nothing, variables = no
     end
     copy_or_empty(overrides, _overrides)
     copy_or_empty(variables, _variables)
-    Sass.compile_file(main_scss, joinpath(output, "main.css"), output_style = Sass.compressed)
-    Sass.compile_file(main_confined_scss, joinpath(output, "main_confined.css"), output_style = Sass.compressed)
+    Sass.compile_file(main_scss, joinpath(output, "main.min.css"), output_style = Sass.compressed)
+    Sass.compile_file(main_confined_scss, joinpath(output, "main_confined.min.css"), output_style = Sass.compressed)
     return BulmaTheme(output)
 end
 
