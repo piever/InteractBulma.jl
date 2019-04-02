@@ -6,6 +6,11 @@
     @import "bulma-accordion.sass";
     @import "bulma-checkradio.sass";
     @import "bulma-tooltip.sass";
+    &.rangeslider {
+        .noUi-connect{
+            background-color: $grey;
+        }
+    }
     @each $name, $pair in $colors {
         $color: nth($pair, 1);
         &.rangeslider.is-#{$name} {
