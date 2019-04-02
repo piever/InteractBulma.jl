@@ -20,7 +20,7 @@ Here we will use variables from the [flatly](https://jenil.github.io/bulmaswatch
 ```julia
 using Interact
 using InteractBulma: compile_theme, examplefolder
-variables_file = joinpath(examplefolder, "flatly", "_variables_scss") # here you would use your own style
+variables_file = joinpath(examplefolder, "flatly", "_variables.scss") # here you would use your own style
 mytheme = compile_theme(variables = variables_file)
 settheme!(mytheme)
 button() # test the new looks of Interact widgets
