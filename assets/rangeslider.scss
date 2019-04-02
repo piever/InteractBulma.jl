@@ -1,0 +1,18 @@
+.noUi-connect{
+    background-color: $grey;
+}
+@each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    &.is-#{$name} {
+        .noUi-connect {
+            background-color: $color;
+        }
+    }
+}
+@each $name, $color in $shades {
+    &.is-#{$name} {
+        .noUi-connect {
+            background-color: $color;
+        }
+    }
+}
