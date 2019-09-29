@@ -8,3 +8,4 @@ assets/sass/
 assets/all.js
 assets/_*.scss
 deps/build.log
+Manifest.toml
