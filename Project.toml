@@ -1,0 +1,18 @@
+name = "InteractBulma"
+uuid = "7981ab7d-5bfa-5e03-9ec9-f3d4afc0a1ca"
+version = "0.6.2"
+
+[deps]
+InteractBase = "d3863d7c-f0c8-5437-a7b4-3ae773c01009"
+Sass = "322a6be2-4ae8-5d68-aaf1-3e960788d1d9"
+
+[compat]
+julia = "1"
+InteractBase = ">=0.10.1"
+Sass = ">=0.1.0"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
